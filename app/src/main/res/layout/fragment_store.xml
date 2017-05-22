@@ -9,11 +9,12 @@
     android:paddingTop="@dimen/activity_vertical_margin">
 
     <LinearLayout
-        android:layout_height="130dp"
-        android:layout_width="match_parent"
+        android:layout_height="210dp"
+        android:layout_width="150dp"
         android:id="@+id/linearLayout1"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="0dp">
         <!-- A CardView that contains a TextView -->
         <android.support.v7.widget.CardView
 
@@ -22,6 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             card_view:cardCornerRadius="4dp">
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -32,40 +34,84 @@
                 <ImageView
                     android:id="@+id/imageView1"
                     android:layout_width="130dp"
-                    android:layout_height="wrap_content"
-                    card_view:srcCompat="@drawable/pic1"
+                    android:layout_height="130dp"
                     android:layout_alignParentTop="true"
-                    android:layout_alignParentStart="true" />
+                    android:layout_centerHorizontal="true"
+                    card_view:srcCompat="@drawable/bmw" />
 
                 <TextView
-                    android:id="@+id/textView1"
-                    android:layout_width="170dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:text="No Money on your account"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignStart="@+id/button1" />
-
-                <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/textView23"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Earn some by saving 1GhS"
-                    android:layout_below="@+id/textView1"
-                    android:layout_alignStart="@+id/textView1" />
-
-                <Button
-                    android:id="@+id/button1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="32sp"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginStart="15dp"
-                    android:layout_toEndOf="@+id/imageView1"
-                    android:background="@color/colorPrimaryDark"
-                    android:text="Read More"
-                    android:textColor="@color/cardview_light_background" />
+                    android:layout_alignStart="@+id/textView24"
+                    android:layout_marginBottom="11dp"
+                    android:text="GHS 40,000" />
+
+                <TextView
+                    android:id="@+id/textView24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/imageView1"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="14dp"
+                    android:text="Motor Car Sale"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="210dp"
+        android:layout_width="150dp"
+        android:id="@+id/linearLayout4"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@id/linearLayout1"
+        android:layout_marginLeft="30dp">
+        <!-- A CardView that contains a TextView -->
+        <android.support.v7.widget.CardView
+
+            android:id="@+id/card_view4"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            card_view:cardCornerRadius="4dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="5dp">
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    card_view:srcCompat="@drawable/jeep" />
+
+                <TextView
+                    android:id="@+id/textView25"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignStart="@+id/textView26"
+                    android:layout_marginBottom="11dp"
+                    android:text="GHS 40,000" />
+
+                <TextView
+                    android:id="@+id/textView26"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/imageView4"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="14dp"
+                    android:text="Motor Car Sale"
+                    android:textStyle="bold" />
+
             </RelativeLayout>
         </android.support.v7.widget.CardView>
     </LinearLayout>
@@ -76,7 +122,7 @@
         android:id="@+id/linearLayout2"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="150dp">
+        android:layout_marginTop="220dp">
         <!-- A CardView that contains a TextView -->
         <android.support.v7.widget.CardView
 
@@ -96,104 +142,33 @@
                     android:id="@+id/imageView2"
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
-                    card_view:srcCompat="@drawable/pic1"
+                    android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
-                    android:layout_alignParentStart="true" />
+                    card_view:srcCompat="@drawable/shirt" />
 
                 <TextView
                     android:id="@+id/textView3"
                     android:layout_width="170dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:text="No Money on your account"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
                     android:layout_alignParentTop="true"
-                    android:layout_alignStart="@+id/button2" />
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="22dp"
+                    android:layout_toEndOf="@+id/imageView2"
+                    android:text="30% Off All Sales"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/textView4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Earn some by saving 1GhS"
+                    android:layout_alignStart="@+id/textView3"
                     android:layout_below="@+id/textView3"
-                    android:layout_alignStart="@+id/textView3" />
+                    android:text="Till 30th May" />
 
-                <Button
-                    android:id="@+id/button2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="32sp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="15dp"
-                    android:layout_toEndOf="@+id/imageView2"
-                    android:background="@color/colorPrimaryDark"
-                    android:text="Read More"
-                    android:textColor="@color/cardview_light_background" />
             </RelativeLayout>
         </android.support.v7.widget.CardView>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_height="130dp"
-        android:layout_width="match_parent"
-        android:id="@+id/linearLayout3"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="300dp">
-        <!-- A CardView that contains a TextView -->
-        <android.support.v7.widget.CardView
-
-            android:id="@+id/card_view3"
-            android:layout_gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            card_view:cardCornerRadius="4dp">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingBottom="5dp"
-                android:paddingRight="5dp"
-                android:paddingTop="5dp">
-
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
-                    card_view:srcCompat="@drawable/pic1"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentStart="true" />
-
-                <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="170dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:text="No Money on your account"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignStart="@+id/button" />
-
-                <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Earn some by saving 1GhS"
-                    android:layout_below="@+id/textView5"
-                    android:layout_alignStart="@+id/textView5" />
-
-                <Button
-                    android:id="@+id/button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="32sp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="15dp"
-                    android:layout_toEndOf="@+id/imageView"
-                    android:background="@color/colorPrimaryDark"
-                    android:text="Read More"
-                    android:textColor="@color/cardview_light_background" />
-            </RelativeLayout>
-        </android.support.v7.widget.CardView>
-    </LinearLayout>
 
 </RelativeLayout>
