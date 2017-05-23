@@ -9,9 +9,9 @@
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scaleType="fitXY"
-        app:srcCompat="@drawable/user_code" />
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/login" />
 
     <Button
         android:id="@+id/button3"
@@ -73,6 +73,16 @@
         android:layout_alignEnd="@+id/button3"
         app:pinBackgroundIsSquare="true"
         />
+
+    <TextView
+        android:id="@+id/createAccountButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="11dp"
+        android:text="Non Account Holder? Open Account Now"
+        android:textColor="#fff" />
 
 
 </RelativeLayout>
