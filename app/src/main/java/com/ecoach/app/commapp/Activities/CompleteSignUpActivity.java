@@ -27,6 +27,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -63,14 +64,29 @@ public class CompleteSignUpActivity extends AppCompatActivity implements LoaderC
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    private EditText idNumber;
+    private EditText instiCode;
+    private Spinner idType;
+    private Spinner accountType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_complete_sign_up);
         setupActionBar();
-        // Set up the login form.
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
+        idType = (Spinner) findViewById(R.id.idtypeSpinner);
+        ArrayAdapter<CharSequence> oAdapter = ArrayAdapter.createFromResource(this,
+                R.array.idType, android.R.layout.simple_spinner_item);
+        oAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        idType.setAdapter(oAdapter);
+
+        accountType = (Spinner) findViewById(R.id.accountTypeSpinner);
+        ArrayAdapter<CharSequence> lAdapter = ArrayAdapter.createFromResource(this,
+                R.array.accountType, android.R.layout.simple_spinner_item);
+        lAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        idType.setAdapter(lAdapter);
+        // Set up the login form. getIntent().getStringExtra("pin");
+    /*    mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
 
         mPasswordView = (EditText) findViewById(R.id.password);
@@ -94,7 +110,7 @@ public class CompleteSignUpActivity extends AppCompatActivity implements LoaderC
         });
 
         mLoginFormView = findViewById(R.id.login_form);
-        mProgressView = findViewById(R.id.login_progress);
+        mProgressView = findViewById(R.id.login_progress);*/
     }
 
     private void populateAutoComplete() {

@@ -18,4 +18,17 @@
         completions."
     </string>
     <string name="title_activity_complete_sign_up">Account Opening</string>
+
+    <string-array name="idType">
+        <item>Voter's Id</item>
+        <item>Passport</item>
+        <item>Driver's License</item>
+    </string-array>
+
+    <string-array name="accountType">
+        <item>Saving</item>
+        <item>Loans</item>
+        <item>Checkings</item>
+    </string-array>
+
 </resources>

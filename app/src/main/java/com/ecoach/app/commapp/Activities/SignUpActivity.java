@@ -3,6 +3,7 @@ package com.ecoach.app.commapp.Activities;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -63,11 +64,32 @@ public class SignUpActivity extends AppCompatActivity implements LoaderCallbacks
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
-
+    private EditText firstName, secondName, email, phone, dob, phoneNumber, address;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+        firstName = (EditText) findViewById(R.id.firstName);
+        secondName = (EditText) findViewById(R.id.secondName);
+        email = (EditText) findViewById(R.id.email);
+        phone = (EditText) findViewById(R.id.phone);
+        dob = (EditText) findViewById(R.id.DOB);
+        address = (EditText) findViewById(R.id.Address);
+
+        Button proceed = (Button) findViewById(R.id.nextproceed);
+        proceed.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent completeSignUp = new Intent(SignUpActivity.this , CompleteSignUpActivity.class);
+                completeSignUp.putExtra("firstname", firstName.getText());
+                completeSignUp.putExtra("secondname", secondName.getText());
+                completeSignUp.putExtra("email", email.getText());
+                completeSignUp.putExtra("phone", phone.getText());
+                completeSignUp.putExtra("dob", dob.getText());
+                completeSignUp.putExtra("address", address.getText());
+                startActivity(completeSignUp);
+            }
+        });
         // Set up the login form.
         //mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         //populateAutoComplete();
