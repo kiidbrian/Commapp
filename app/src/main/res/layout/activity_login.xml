@@ -7,11 +7,11 @@
     tools:context="com.ecoach.app.commapp.Activities.LoginActivity">
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/bglogin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/login" />
+        app:srcCompat="@drawable/bg" />
 
     <Button
         android:id="@+id/button3"

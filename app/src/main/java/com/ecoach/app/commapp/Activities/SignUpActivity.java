@@ -87,7 +87,10 @@ public class SignUpActivity extends AppCompatActivity implements LoaderCallbacks
                 completeSignUp.putExtra("phone", phone.getText());
                 completeSignUp.putExtra("dob", dob.getText());
                 completeSignUp.putExtra("address", address.getText());
-                startActivity(completeSignUp);
+                if(loginLegal()){
+                    startActivity(completeSignUp);
+                }
+
             }
         });
         // Set up the login form.
@@ -116,6 +119,34 @@ public class SignUpActivity extends AppCompatActivity implements LoaderCallbacks
 
         //mLoginFormView = findViewById(R.id.login_form);
         //mProgressView = findViewById(R.id.login_progress);
+    }
+
+    private boolean loginLegal(){
+        if (TextUtils.isEmpty(firstName.getText())) {
+            firstName.setError("Required");
+            return false;
+        }
+        if (TextUtils.isEmpty(secondName.getText())) {
+            secondName.setError("Required");
+            return false;
+        }
+        if (TextUtils.isEmpty(email.getText())) {
+            email.setError("Required");
+            return false;
+        }
+        if (TextUtils.isEmpty(phone.getText())) {
+            phone.setError("Required");
+            return false;
+        }
+        if (TextUtils.isEmpty(dob.getText())) {
+            dob.setError("Required");
+            return false;
+        }
+        if (TextUtils.isEmpty(address.getText())) {
+            address.setError("Required");
+            return false;
+        }
+        return true;
     }
 
     private void populateAutoComplete() {
@@ -160,6 +191,7 @@ public class SignUpActivity extends AppCompatActivity implements LoaderCallbacks
             }
         }
     }
+
 
 
     /**

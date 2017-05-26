@@ -3,6 +3,7 @@ package com.ecoach.app.commapp.Activities;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -74,6 +75,8 @@ public class CompleteSignUpActivity extends AppCompatActivity implements LoaderC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_complete_sign_up);
         setupActionBar();
+        idNumber = (EditText) findViewById(R.id.idNumber);
+        instiCode = (EditText) findViewById(R.id.institutionCode);
         idType = (Spinner) findViewById(R.id.idtypeSpinner);
         ArrayAdapter<CharSequence> oAdapter = ArrayAdapter.createFromResource(this,
                 R.array.idType, android.R.layout.simple_spinner_item);
@@ -84,7 +87,15 @@ public class CompleteSignUpActivity extends AppCompatActivity implements LoaderC
         ArrayAdapter<CharSequence> lAdapter = ArrayAdapter.createFromResource(this,
                 R.array.accountType, android.R.layout.simple_spinner_item);
         lAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        idType.setAdapter(lAdapter);
+        accountType.setAdapter(lAdapter);
+
+        Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
+        mEmailSignInButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                attemptLogin();
+            }
+        });
         // Set up the login form. getIntent().getStringExtra("pin");
     /*    mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
@@ -109,8 +120,9 @@ public class CompleteSignUpActivity extends AppCompatActivity implements LoaderC
             }
         });
 
+        ;*/
         mLoginFormView = findViewById(R.id.login_form);
-        mProgressView = findViewById(R.id.login_progress);*/
+        mProgressView = findViewById(R.id.login_progress);
     }
 
     private void populateAutoComplete() {
@@ -175,7 +187,7 @@ public class CompleteSignUpActivity extends AppCompatActivity implements LoaderC
     private void attemptLogin() {
         if (mAuthTask != null) {
             return;
-        }
+        }/*
 
         // Reset errors.
         mEmailView.setError(null);
@@ -183,26 +195,26 @@ public class CompleteSignUpActivity extends AppCompatActivity implements LoaderC
 
         // Store values at the time of the login attempt.
         String email = mEmailView.getText().toString();
-        String password = mPasswordView.getText().toString();
+        String password = mPasswordView.getText().toString();*/
 
         boolean cancel = false;
         View focusView = null;
 
         // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
+      /*  if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
             mPasswordView.setError(getString(R.string.error_invalid_password));
             focusView = mPasswordView;
             cancel = true;
-        }
+        }*/
 
         // Check for a valid email address.
-        if (TextUtils.isEmpty(email)) {
-            mEmailView.setError(getString(R.string.error_field_required));
-            focusView = mEmailView;
+        if (TextUtils.isEmpty(idNumber.getText())) {
+            idNumber.setError("Required");
+            focusView = idNumber;
             cancel = true;
-        } else if (!isEmailValid(email)) {
-            mEmailView.setError(getString(R.string.error_invalid_email));
-            focusView = mEmailView;
+        } else if (TextUtils.isEmpty(instiCode.getText())) {
+            instiCode.setError("Required");
+            focusView = instiCode;
             cancel = true;
         }
 
@@ -214,7 +226,7 @@ public class CompleteSignUpActivity extends AppCompatActivity implements LoaderC
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            mAuthTask = new UserLoginTask(email, password);
+            mAuthTask = new UserLoginTask("", "");
             mAuthTask.execute((Void) null);
         }
     }
@@ -239,7 +251,6 @@ public class CompleteSignUpActivity extends AppCompatActivity implements LoaderC
         // the progress spinner.
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
             int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
-
             mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
             mLoginFormView.animate().setDuration(shortAnimTime).alpha(
                     show ? 0 : 1).setListener(new AnimatorListenerAdapter() {
@@ -362,10 +373,12 @@ public class CompleteSignUpActivity extends AppCompatActivity implements LoaderC
             showProgress(false);
 
             if (success) {
+                Intent login = new Intent(CompleteSignUpActivity.this, LoginActivity.class);
+                startActivity(login);
                 finish();
             } else {
-                mPasswordView.setError(getString(R.string.error_incorrect_password));
-                mPasswordView.requestFocus();
+                //mPasswordView.setError(getString(R.string.error_incorrect_password));
+                //mPasswordView.requestFocus();
             }
         }
 
