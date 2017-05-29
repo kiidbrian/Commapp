@@ -1,9 +1,14 @@
 package com.ecoach.app.commapp.Services;
 
 import com.ecoach.app.commapp.Models.Account;
+import com.ecoach.app.commapp.Models.ResponseObjects.AccountOpeningResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.Headers;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 
 /**
@@ -11,6 +16,8 @@ import retrofit2.http.POST;
  */
 
 public interface  CommappService {
-    @POST("users/new")
-    Call<Account> createUser(@Body Account user);
+    @Headers("apikey: k894gw22d90b415793fa30a74bdfct78")
+    @FormUrlEncoded
+    @POST("/users/request_opening")
+    Call<AccountOpeningResponse> requestOpening(@Field("first_name") String firstName, @Field("last_name") String lastName, @Field("email") String email, @Field("phone_number") String phoneNumber, @Field("dob") String dob, @Field("account_type") String acountType, @Field("Gender") String gender, @Field("address") String address, @Field("institution_code") String institution_code);
 }

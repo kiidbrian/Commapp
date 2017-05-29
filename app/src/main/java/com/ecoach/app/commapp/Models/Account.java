@@ -7,24 +7,13 @@ package com.ecoach.app.commapp.Models;
 public class Account {
     public String first_name;
     public String last_name;
+    public String gender;
     public String email;
+    public String address;
     public String phone_number;
     public String dob;
+    public String id_number;
+    public String id_type;
     public String account_type;
-    public String Gender;
-    public String Address;
     public String institution_code;
-
-    public Account(String fName, String lName, String mail, String phoneNumber, String date, String accountType, String gender
-    ,String address, String instiCode){
-        first_name = fName;
-        last_name = lName;
-        email = mail;
-        phone_number = phoneNumber;
-        dob = date;
-        account_type = accountType;
-        Gender = gender;
-        Address = address;
-        institution_code = instiCode;
-    }
 }

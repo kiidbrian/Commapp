@@ -15,7 +15,9 @@ buildscript {
 
 allprojects {
     repositories {
+        maven { url "https://dl.bintray.com/michelelacorte/maven/" }
         jcenter()
+        mavenCentral()
     }
 }
 
