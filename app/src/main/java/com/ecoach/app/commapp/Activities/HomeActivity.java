@@ -4,6 +4,7 @@ import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
 import android.support.v4.app.Fragment;
@@ -20,6 +21,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.azoft.carousellayoutmanager.CarouselLayoutManager;
+import com.azoft.carousellayoutmanager.CarouselZoomPostLayoutListener;
+import com.azoft.carousellayoutmanager.CenterScrollListener;
+import com.ecoach.app.commapp.Adapters.EventsAdapter;
 import com.ecoach.app.commapp.R;
 
 import java.util.ArrayList;
@@ -125,8 +130,16 @@ public class HomeActivity extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_home, container, false);
-            SwipeStack swipeStack = (SwipeStack) rootView.findViewById(R.id.swipeStack);
-            swipeStack.setAdapter(homeEvents);
+            final CarouselLayoutManager layoutManager = new CarouselLayoutManager(CarouselLayoutManager.HORIZONTAL);
+            layoutManager.setPostLayoutListener(new CarouselZoomPostLayoutListener());
+            final RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.eventsCards);
+            recyclerView.addOnScrollListener(new CenterScrollListener());
+            recyclerView.setLayoutManager(layoutManager);
+            recyclerView.setHasFixedSize(true);
+            String[] dummyData = {"1", "2", "3", "4"};
+            recyclerView.setAdapter(new EventsAdapter(dummyData));
+            //SwipeStack swipeStack = (SwipeStack) rootView.findViewById(R.id.swipeStack);
+            //swipeStack.setAdapter(homeEvents);
             return rootView;
         }
     }

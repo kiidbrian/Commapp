@@ -19,5 +19,16 @@ public interface  CommappService {
     @Headers("apikey: k894gw22d90b415793fa30a74bdfct78")
     @FormUrlEncoded
     @POST("/users/request_opening")
-    Call<AccountOpeningResponse> requestOpening(@Field("first_name") String firstName, @Field("last_name") String lastName, @Field("email") String email, @Field("phone_number") String phoneNumber, @Field("dob") String dob, @Field("account_type") String acountType, @Field("Gender") String gender, @Field("address") String address, @Field("institution_code") String institution_code);
+    Call<AccountOpeningResponse> requestOpening(@Field("first_name") String firstName, @Field("last_name") String lastName, @Field("gender") String gender, @Field("email") String email, @Field("phone_number") String phoneNumber, @Field("dob") String dob, @Field("account_type") String acountType, @Field("address") String address, @Field("institution_code") String institution_code);
+
+    @Headers("apikey: k894gw22d90b415793fa30a74bdfct78")
+    @FormUrlEncoded
+    @POST("/users")
+    Call<AccountOpeningResponse> loginUser(@Field("pin") String pin);
+
+    @Headers("apikey: k894gw22d90b415793fa30a74bdfct78")
+    @FormUrlEncoded
+    @POST("/users")
+    Call<AccountOpeningResponse> getEvents(@Field("pin") String code);
+
 }
