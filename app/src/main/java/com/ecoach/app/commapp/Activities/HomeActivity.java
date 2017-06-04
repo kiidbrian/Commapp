@@ -17,9 +17,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.ecoach.app.commapp.R;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import link.fls.swipestack.SwipeStack;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -38,6 +44,8 @@ public class HomeActivity extends AppCompatActivity {
      */
     private ViewPager mViewPager;
 
+    private static SwipeStackAdapter homeEvents;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +63,12 @@ public class HomeActivity extends AppCompatActivity {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
+        List<String> homeEventsData = new ArrayList<String>();
+        homeEventsData.add("One");
+        homeEventsData.add("Two");
+        homeEventsData.add("Three");
+        homeEventsData.add("Four");
+        homeEvents = new SwipeStackAdapter(homeEventsData);
 
     }
 
@@ -111,6 +125,8 @@ public class HomeActivity extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_home, container, false);
+            SwipeStack swipeStack = (SwipeStack) rootView.findViewById(R.id.swipeStack);
+            swipeStack.setAdapter(homeEvents);
             return rootView;
         }
     }
@@ -220,6 +236,39 @@ public class HomeActivity extends AppCompatActivity {
                     return "E-Store";
             }
             return null;
+        }
+    }
+
+    public class SwipeStackAdapter extends BaseAdapter {
+
+        private List<String> mData;
+
+        public SwipeStackAdapter(List<String> data) {
+            this.mData = data;
+        }
+
+        @Override
+        public int getCount() {
+            return mData.size();
+        }
+
+        @Override
+        public String getItem(int position) {
+            return mData.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public View getView(final int position, View convertView, ViewGroup parent) {
+            convertView = getLayoutInflater().inflate(R.layout.home_swipecard, parent, false);
+            //TextView textViewCard = (TextView) convertView.findViewById(R.id.home_swipecard);
+            //textViewCard.setText(mData.get(position));
+
+            return convertView;
         }
     }
 }
