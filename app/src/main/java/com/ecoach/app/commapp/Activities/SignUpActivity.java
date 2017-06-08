@@ -104,13 +104,13 @@ public class SignUpActivity extends AppCompatActivity implements LoaderCallbacks
             @Override
             public void onClick(View view) {
                 Intent completeSignUp = new Intent(SignUpActivity.this , CompleteSignUpActivity.class);
-                completeSignUp.putExtra("firstname", firstName.getText());
-                completeSignUp.putExtra("secondname", secondName.getText());
+                completeSignUp.putExtra("firstname", firstName.getText().toString());
+                completeSignUp.putExtra("secondname", secondName.getText().toString());
                 completeSignUp.putExtra("gender", genderSpinner.getSelectedItem().toString());
-                completeSignUp.putExtra("email", email.getText());
-                completeSignUp.putExtra("phone", phone.getText());
-                completeSignUp.putExtra("dob", dob.getText());
-                completeSignUp.putExtra("address", address.getText());
+                completeSignUp.putExtra("email", email.getText().toString());
+                completeSignUp.putExtra("phone", phone.getText().toString());
+                completeSignUp.putExtra("dob", dob.getText().toString());
+                completeSignUp.putExtra("address", address.getText().toString());
                 if(loginLegal()){
                     startActivity(completeSignUp);
                 }

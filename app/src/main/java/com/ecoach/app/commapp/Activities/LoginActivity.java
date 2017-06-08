@@ -29,12 +29,13 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         //getActionBar().hide();
+        pin = (PinEntryEditText) findViewById(R.id.txt_pin_entry);
         Button loginButton = (Button) findViewById(R.id.button3);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String pinCode = pin.getText().toString();
-
+                login(pinCode);
             }
         });
 

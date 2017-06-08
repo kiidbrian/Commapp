@@ -215,12 +215,14 @@ public class CompleteSignUpActivity extends AppCompatActivity  {
         @Override
         public void onResponse(Call<AccountOpeningResponse> call, Response<AccountOpeningResponse> response) {
             showProgress(false);
+            Intent Home  = new Intent(CompleteSignUpActivity.this, HomeActivity.class);
+            startActivity(Home);
             Toast.makeText(CompleteSignUpActivity.this, response.toString(), Toast.LENGTH_SHORT);
         }
 
         @Override
         public void onFailure(Call<AccountOpeningResponse> call, Throwable t) {
-            Toast.makeText(CompleteSignUpActivity.this, t.toString(), Toast.LENGTH_SHORT);
+            //Toast.makeText(CompleteSignUpActivity.this, t.toString(), Toast.LENGTH_SHORT);
         }
     }
 
