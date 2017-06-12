@@ -166,19 +166,19 @@ public class HomeActivity extends AppCompatActivity {
             mDemoSlider.setCustomAnimation(new DescriptionAnimation());
             mDemoSlider.setDuration(4000);
             final RecyclerView homeEventList = (RecyclerView) rootView.findViewById(R.id.eventsCards);
-            final RecyclerView homeOfferList = (RecyclerView) rootView.findViewById(R.id.homeOfferCards);
+            //final RecyclerView homeOfferList = (RecyclerView) rootView.findViewById(R.id.homeOfferCards);
             //recyclerView.addOnScrollListener(new CenterScrollListener());
             RecyclerView.LayoutManager mLayoutManager1 = new LinearLayoutManager(getActivity());
             RecyclerView.LayoutManager mLayoutManager2 = new LinearLayoutManager(getActivity());
 
             homeEventList.setLayoutManager(mLayoutManager1);
             homeEventList.setHasFixedSize(true);
-            homeOfferList.setLayoutManager(mLayoutManager2);
-            homeOfferList.setHasFixedSize(true);
+            //homeOfferList.setLayoutManager(mLayoutManager2);
+            //homeOfferList.setHasFixedSize(true);
 
             String[] dummyData = {"1", "2", "3", "4"};
             homeEventList.setAdapter(new EventsAdapter(dummyData));
-            homeOfferList.setAdapter(new HomeOfferAdapter(dummyData));
+            //homeOfferList.setAdapter(new HomeOfferAdapter(dummyData));
             //SwipeStack swipeStack = (SwipeStack) rootView.findViewById(R.id.swipeStack);
             //swipeStack.setAdapter(homeEvents);
             return rootView;
