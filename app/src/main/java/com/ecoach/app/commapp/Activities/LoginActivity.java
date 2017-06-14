@@ -35,6 +35,8 @@ public class LoginActivity extends Activity {
             @Override
             public void onClick(View view) {
                 String pinCode = pin.getText().toString();
+                Intent homeActivity = new Intent(LoginActivity.this, HomeActivity.class);
+                startActivity(homeActivity);
                 login(pinCode);
             }
         });
