@@ -169,7 +169,7 @@ public class HomeActivity extends AppCompatActivity {
             //final RecyclerView homeOfferList = (RecyclerView) rootView.findViewById(R.id.homeOfferCards);
             //recyclerView.addOnScrollListener(new CenterScrollListener());
             RecyclerView.LayoutManager mLayoutManager1 = new LinearLayoutManager(getActivity());
-            RecyclerView.LayoutManager mLayoutManager2 = new LinearLayoutManager(getActivity());
+            //RecyclerView.LayoutManager mLayoutManager2 = new LinearLayoutManager(getActivity());
 
             homeEventList.setLayoutManager(mLayoutManager1);
             homeEventList.setHasFixedSize(true);
@@ -178,6 +178,7 @@ public class HomeActivity extends AppCompatActivity {
 
             String[] dummyData = {"1", "2", "3", "4"};
             homeEventList.setAdapter(new EventsAdapter(dummyData));
+            //homeEventList.setOn
             //homeOfferList.setAdapter(new HomeOfferAdapter(dummyData));
             //SwipeStack swipeStack = (SwipeStack) rootView.findViewById(R.id.swipeStack);
             //swipeStack.setAdapter(homeEvents);

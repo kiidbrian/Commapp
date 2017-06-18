@@ -29,6 +29,8 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     apply plugin: 'realm-android'
+
+
     compile 'com.android.support:appcompat-v7:25.2.0'
     compile 'com.google.android.gms:play-services:10.2.6'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
@@ -43,10 +45,7 @@ dependencies {
     compile 'it.michelelacorte.swipeablecard:library:2.3.0@aar'
     compile 'link.fls:swipestack:0.3.0'
     compile 'com.azoft.carousellayoutmanager:carousel:1.2.1'
-    compile 'com.squareup.picasso:picasso:2.3.2'
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.daimajia.slider:library:1.1.5@aar'
-
-
     testCompile 'junit:junit:4.12'
 }
