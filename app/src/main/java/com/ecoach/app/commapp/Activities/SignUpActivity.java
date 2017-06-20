@@ -3,6 +3,9 @@ package com.ecoach.app.commapp.Activities;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
@@ -27,10 +30,13 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import com.ecoach.app.commapp.R;
@@ -74,19 +80,37 @@ public class SignUpActivity extends AppCompatActivity implements LoaderCallbacks
         email = (EditText) findViewById(R.id.email);
         phone = (EditText) findViewById(R.id.phone);
         dob = (EditText) findViewById(R.id.DOB);
-        address = (EditText) findViewById(R.id.Address);
+        dob.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if(b)selectDate();
+            }
+        });
+        dob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selectDate();
 
+            }
+        });
+        address = (EditText) findViewById(R.id.Address);
+        final Spinner genderSpinner = (Spinner) findViewById(R.id.genderSpinner);
+        ArrayAdapter<CharSequence> gAdapter = ArrayAdapter.createFromResource(this,
+                R.array.gender, android.R.layout.simple_spinner_item);
+        gAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        genderSpinner.setAdapter(gAdapter);
         Button proceed = (Button) findViewById(R.id.nextproceed);
         proceed.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent completeSignUp = new Intent(SignUpActivity.this , CompleteSignUpActivity.class);
-                completeSignUp.putExtra("firstname", firstName.getText());
-                completeSignUp.putExtra("secondname", secondName.getText());
-                completeSignUp.putExtra("email", email.getText());
-                completeSignUp.putExtra("phone", phone.getText());
-                completeSignUp.putExtra("dob", dob.getText());
-                completeSignUp.putExtra("address", address.getText());
+                completeSignUp.putExtra("firstname", firstName.getText().toString());
+                completeSignUp.putExtra("secondname", secondName.getText().toString());
+                completeSignUp.putExtra("gender", genderSpinner.getSelectedItem().toString());
+                completeSignUp.putExtra("email", email.getText().toString());
+                completeSignUp.putExtra("phone", phone.getText().toString());
+                completeSignUp.putExtra("dob", dob.getText().toString());
+                completeSignUp.putExtra("address", address.getText().toString());
                 if(loginLegal()){
                     startActivity(completeSignUp);
                 }
@@ -132,6 +156,10 @@ public class SignUpActivity extends AppCompatActivity implements LoaderCallbacks
         }
         if (TextUtils.isEmpty(email.getText())) {
             email.setError("Required");
+            return false;
+        }
+        if(!isEmailValid(email.getText().toString())){
+            email.setError("Enter a valid email");
             return false;
         }
         if (TextUtils.isEmpty(phone.getText())) {
@@ -401,6 +429,36 @@ public class SignUpActivity extends AppCompatActivity implements LoaderCallbacks
             mAuthTask = null;
             showProgress(false);
         }
+    }
+
+    public static class SelectDateFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
+
+        // Thanks to -> http://javapapers.com/android/android-datepicker/
+        EditText mEditText;
+        public SelectDateFragment(EditText mEditText){
+            this.mEditText = mEditText;
+        }
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            final Calendar calendar = Calendar.getInstance();
+            int yy = calendar.get(Calendar.YEAR);
+            int mm = calendar.get(Calendar.MONTH);
+            int dd = calendar.get(Calendar.DAY_OF_MONTH);
+            return new DatePickerDialog(getActivity(), this, yy, mm, dd);
+        }
+
+        public void onDateSet(DatePicker view, int yy, int mm, int dd) {
+            populateSetDate(mEditText, yy, mm+1, dd);
+        }
+    }
+
+    public void selectDate() {
+        DialogFragment newFragment = new SelectDateFragment(dob);
+        newFragment.show(getFragmentManager(), "DatePicker");
+    }
+    public static void populateSetDate(EditText mEditText, int year, int month, int day) {
+        mEditText.setText(month+"/"+day+"/"+year);
     }
 }
 

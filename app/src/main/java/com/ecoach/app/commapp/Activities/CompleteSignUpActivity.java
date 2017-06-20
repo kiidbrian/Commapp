@@ -76,7 +76,7 @@ public class CompleteSignUpActivity extends AppCompatActivity  {
     private EditText instiCode;
     private Spinner idType;
     private Spinner accountType;
-    private String firstname, secondname, email, phone, dob, address;
+    private String firstname, secondname, gender, email, phone, dob, address;
     CommappService apiService;
 
     @Override
@@ -194,22 +194,20 @@ public class CompleteSignUpActivity extends AppCompatActivity  {
             Account openAccount = new Account();
             openAccount.first_name = getIntent().getStringExtra("firstname");
             openAccount.last_name = getIntent().getStringExtra("secondname");
+            openAccount.gender = getIntent().getStringExtra("gender");
             openAccount.email = getIntent().getStringExtra("email");
             openAccount.address = getIntent().getStringExtra("address");
             openAccount.phone_number = getIntent().getStringExtra("phone");
             openAccount.dob = getIntent().getStringExtra("dob");
-
-            if(OpenAccountRequest(openAccount)){
-
-            }
+            OpenAccountRequest(openAccount);
         }
     }
 
-    private boolean OpenAccountRequest(Account account){
-        Call<AccountOpeningResponse> response = apiService.requestOpening(account.first_name, account.last_name, account.email, account.phone_number, account.dob, account.account_type, account.gender, account.address, account.institution_code);
+    private void OpenAccountRequest(Account account){
+        Call<AccountOpeningResponse> response = apiService.requestOpening(account.first_name, account.last_name, account.gender, account.email, account.phone_number, account.dob, account.account_type, account.address, account.institution_code);
         //Toast.makeText(CompleteSignUpActivity.this, response., Toast.LENGTH_LONG).show();
         response.enqueue(new openingCallback());
-        return false;
+        //return false;
     }
 
     private class openingCallback implements Callback<AccountOpeningResponse>{
@@ -217,12 +215,14 @@ public class CompleteSignUpActivity extends AppCompatActivity  {
         @Override
         public void onResponse(Call<AccountOpeningResponse> call, Response<AccountOpeningResponse> response) {
             showProgress(false);
-            Toast.makeText(CompleteSignUpActivity.this, "here", Toast.LENGTH_SHORT);
+            Intent Home  = new Intent(CompleteSignUpActivity.this, HomeActivity.class);
+            startActivity(Home);
+            Toast.makeText(CompleteSignUpActivity.this, response.toString(), Toast.LENGTH_SHORT);
         }
 
         @Override
         public void onFailure(Call<AccountOpeningResponse> call, Throwable t) {
-            Toast.makeText(CompleteSignUpActivity.this, "nope", Toast.LENGTH_SHORT);
+            //Toast.makeText(CompleteSignUpActivity.this, t.toString(), Toast.LENGTH_SHORT);
         }
     }
 
